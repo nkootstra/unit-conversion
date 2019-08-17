@@ -5,7 +5,7 @@ namespace Nkootstra\UnitConversion\Unit\Mass;
 
 use Nkootstra\UnitConversion\Unit;
 
-class KiloGram extends Unit
+class MilliGram extends Unit
 {
     /**
      * Setup unit
@@ -16,9 +16,8 @@ class KiloGram extends Unit
 
         // setup symbols and unit
         $this->setSymbols([
-            'kilogram',
-            'kilo',
-            'kg'
-        ])->setUnits(1);
+            'milligram',
+            'mg'
+        ])->setUnits(0.000001);
     }
 }

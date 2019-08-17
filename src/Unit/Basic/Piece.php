@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Nkootstra\UnitConversion\Unit\Mass;
+namespace Nkootstra\UnitConversion\Unit\Basic;
 
 use Nkootstra\UnitConversion\Unit;
 
-class KiloGram extends Unit
+class Piece extends Unit
 {
     /**
      * Setup unit
@@ -16,9 +16,9 @@ class KiloGram extends Unit
 
         // setup symbols and unit
         $this->setSymbols([
-            'kilogram',
-            'kilo',
-            'kg'
+            'piece',
+            'stuk',
+            'st'
         ])->setUnits(1);
     }
 }

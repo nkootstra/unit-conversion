@@ -63,7 +63,7 @@ abstract class Unit implements UnitInterface
 
         // slow :(
         foreach ($this->getSymbols() as $symbol) {
-            if (strpos($unit, $symbol) === 0) {
+            if (strpos($unit, $symbol) === 0 && strlen($symbol) > 2) {
                 return true;
             }
         }

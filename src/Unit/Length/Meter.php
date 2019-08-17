@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Nkootstra\UnitConversion\Unit\Mass;
+namespace Nkootstra\UnitConversion\Unit\Length;
 
 use Nkootstra\UnitConversion\Unit;
 
-class KiloGram extends Unit
+class Meter extends Unit
 {
     /**
      * Setup unit
@@ -16,9 +16,9 @@ class KiloGram extends Unit
 
         // setup symbols and unit
         $this->setSymbols([
-            'kilogram',
-            'kilo',
-            'kg'
+            'meter',
+            'metre',
+            'm'
         ])->setUnits(1);
     }
 }

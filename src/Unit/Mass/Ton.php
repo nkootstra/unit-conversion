@@ -5,7 +5,7 @@ namespace Nkootstra\UnitConversion\Unit\Mass;
 
 use Nkootstra\UnitConversion\Unit;
 
-class KiloGram extends Unit
+class Ton extends Unit
 {
     /**
      * Setup unit
@@ -16,9 +16,8 @@ class KiloGram extends Unit
 
         // setup symbols and unit
         $this->setSymbols([
-            'kilogram',
-            'kilo',
-            'kg'
-        ])->setUnits(1);
+            'ton',
+            't'
+        ])->setUnits(1000);
     }
 }

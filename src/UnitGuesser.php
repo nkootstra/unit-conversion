@@ -23,13 +23,13 @@ class UnitGuesser
     {
         // try to extract quantity and unit
         preg_match_all(self::REGEX, $input, $matches);
-        $symbol = array_pop($matches[0]); // l | Liter | liters
-        $volume = $matches[0]; // 1 | 2.5 | 3,4
+        $symbol = array_pop($matches[0]); // e.g. l | Liter | liters
+        $volume = $matches[0]; // e.g. 1 | 2.5 | 3,4
 
         // Where do you want to set the quantity?
         $quantity = $this->getQuantity($volume);
 
-        return $this->getUnit($symbol, $quantity);
+        return $this->getUnit($symbol, $quantity, $default);
     }
 
     /**
@@ -74,7 +74,7 @@ class UnitGuesser
         return $quantity;
     }
 
-    private function getUnit(string $unit, float $quantity): ?Unit
+    private function getUnit(string $unit, float $quantity, ?UnitInterface $default): ?Unit
     {
         foreach ($this->knownUnits as $knownUnit) {
 
@@ -87,7 +87,7 @@ class UnitGuesser
             }
         }
 
-        return null;
+        return $default->setQuantity($quantity);
     }
 
 }

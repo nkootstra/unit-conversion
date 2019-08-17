@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Nkootstra\UnitConversion\Unit\Mass;
+namespace Nkootstra\UnitConversion\Unit\Volume;
 
 use Nkootstra\UnitConversion\Unit;
 
-class KiloGram extends Unit
+class CentiLiter extends Unit
 {
     /**
      * Setup unit
@@ -16,9 +16,9 @@ class KiloGram extends Unit
 
         // setup symbols and unit
         $this->setSymbols([
-            'kilogram',
-            'kilo',
-            'kg'
-        ])->setUnits(1);
+            'centiliter',
+            'centilitre',
+            'cl',
+        ])->setUnits(0.01);
     }
 }

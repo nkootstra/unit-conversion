@@ -1,7 +1,8 @@
 <?php
 
-namespace Nkootstra\UnitConversion\Tests;
+namespace Nkootstra\UnitConversion\Tests\Volume;
 
+use Nkootstra\UnitConversion\Unit\Basic\Piece;
 use Nkootstra\UnitConversion\Unit\Volume\{Liter};
 use Nkootstra\UnitConversion\UnitGuesser;
 use PHPUnit\Framework\TestCase;
@@ -58,5 +59,24 @@ class UnitGuesserLiterTest extends TestCase
 
         $this->assertInstanceOf(Liter::class, $liter);
         $this->assertEquals(6, $liter->getQuantity());
+    }
+
+    /** @test */
+    public function guess_liter5()
+    {
+        $liter = $this->guess->guess(',7 liter');
+
+        $this->assertInstanceOf(Liter::class, $liter);
+        $this->assertEquals(0.7, $liter->getQuantity());
+    }
+
+    /** @test */
+    public function transform_incorrect_spelled_unit_to_default()
+    {
+        $test = $this->guess->guess('8,0 li', new Piece);
+
+        $this->assertNotNull($test);
+        $this->assertInstanceOf(Piece::class, $test);
+        $this->assertEquals(8, $test->getQuantity());
     }
 }
