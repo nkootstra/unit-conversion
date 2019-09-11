@@ -6,7 +6,7 @@
 
 This package is made with the intention to make it easier to convert units. It's also possible to let the package figure out what kind unit has been used. 
 
-![Example 1](https://raw.githubusercontent.com/nkootstra/unit-conversion/master/images/examples1.svg)
+![Example 1](https://raw.githubusercontent.com/nkootstra/unit-conversion/master/images/examples1.png)
 
 ## Installation
 
