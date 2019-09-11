@@ -1,11 +1,12 @@
-# Very short description of the package
+# Unit conversion and guessing simplified
 
+[![Github Actions CI](https://github.com/nkootstra/unit-conversion/workflows/Continuous%20Integration/badge.svg)](https://github.com/nkootstra/unit-conversion)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nkootstra/unit-conversion.svg?style=flat-square)](https://packagist.org/packages/nkootstra/unit-conversion)
-[![Build Status](https://img.shields.io/travis/nkootstra/unit-conversion/master.svg?style=flat-square)](https://travis-ci.org/nkootstra/unit-conversion)
-[![Quality Score](https://img.shields.io/scrutinizer/g/nkootstra/unit-conversion.svg?style=flat-square)](https://scrutinizer-ci.com/g/nkootstra/unit-conversion)
 [![Total Downloads](https://img.shields.io/packagist/dt/nkootstra/unit-conversion.svg?style=flat-square)](https://packagist.org/packages/nkootstra/unit-conversion)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package is made with the intention to make it easier to convert units. It's also possible to let the package figure out what kind unit has been used. 
+
+![Example 1](https://raw.githubusercontent.com/nkootstra/unit-conversion/master/images/examples1.svg)
 
 ## Installation
 
@@ -18,7 +19,10 @@ composer require nkootstra/unit-conversion
 ## Usage
 
 ``` php
-// Usage description here
+$guess = new UnitGuesser;
+$unit = $guess->guess('2,5 x 5 l');
+$unit->getQuantity(); // 12.5
+$unit->getUnit(); // liter
 ```
 
 ### Testing
@@ -47,7 +51,3 @@ If you discover any security related issues, please email niels.kootstra@gmail.c
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## PHP Package Boilerplate
-
-This package was generated using the [PHP Package Boilerplate](https://laravelpackageboilerplate.com).

@@ -13,7 +13,7 @@ class UnitGuesserLiterTest extends TestCase
 
     public function setUp()
     {
-        $this->guess = new UnitGuesser();
+        $this->guess = new UnitGuesser;
     }
 
     public function testGuessShortLiter()
