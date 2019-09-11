@@ -16,62 +16,55 @@ class UnitGuesserLiterTest extends TestCase
         $this->guess = new UnitGuesser();
     }
 
-    /** @test */
-    public function guess_short_liter()
+    public function testGuessShortLiter()
     {
-        $liter = $this->guess->guess('2,5 x 5 l');
+        $unit = $this->guess->guess('2,5 x 5 l');
 
-        $this->assertInstanceOf(Liter::class, $liter);
-        $this->assertEquals(12.5, $liter->getQuantity());
+        $this->assertInstanceOf(Liter::class, $unit);
+        $this->assertEquals(12.5, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_liter()
+    public function testGuessLiter()
     {
-        $liter = $this->guess->guess('6 liter');
+        $unit = $this->guess->guess('6 liter');
 
-        $this->assertInstanceOf(Liter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(Liter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_liter2()
+    public function testGuessLiter2()
     {
-        $liter = $this->guess->guess('6 liters');
+        $unit = $this->guess->guess('6 liters');
 
-        $this->assertInstanceOf(Liter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(Liter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_liter3()
+    public function testGuessLiter3()
     {
-        $liter = $this->guess->guess('6 liter(s)');
+        $unit = $this->guess->guess('6 liter(s)');
 
-        $this->assertInstanceOf(Liter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(Liter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_liter4()
+    public function testGuessLitre4()
     {
-        $liter = $this->guess->guess('6 litre');
+        $unit = $this->guess->guess('6 litre');
 
-        $this->assertInstanceOf(Liter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(Liter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_liter5()
+    public function testGuessLiter5()
     {
-        $liter = $this->guess->guess(',7 liter');
+        $unit = $this->guess->guess(',7 liter');
 
-        $this->assertInstanceOf(Liter::class, $liter);
-        $this->assertEquals(0.7, $liter->getQuantity());
+        $this->assertInstanceOf(Liter::class, $unit);
+        $this->assertEquals(0.7, $unit->getQuantity());
     }
 
-    /** @test */
-    public function transform_incorrect_spelled_unit_to_default()
+    public function testLiterWithDefault()
     {
         $test = $this->guess->guess('8,0 li', new Piece);
 

@@ -14,10 +14,9 @@ class UnitConversionTest extends TestCase
         $this->conversion = new UnitConversion;
     }
 
-    /** @test */
-    public function countLoadedUnits()
+    public function testLoadedUnits()
     {
+        // todo
         $this->assertTrue(true);
-        //$this->assertCount(1, $this->conversion->getUnits());
     }
 }

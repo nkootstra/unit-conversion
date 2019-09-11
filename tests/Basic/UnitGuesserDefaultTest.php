@@ -13,11 +13,10 @@ class UnitGuesserDefaultTest extends TestCase
 
     public function setUp()
     {
-        $this->guess = new UnitGuesser();
+        $this->guess = new UnitGuesser;
     }
 
-    /** @test */
-    public function guess_default_piece()
+    public function testGuessDefaultPiece()
     {
         $test = $this->guess->guess('5 stuks', new Piece);
 
@@ -25,8 +24,7 @@ class UnitGuesserDefaultTest extends TestCase
         $this->assertEquals(5, $test->getQuantity());
     }
 
-    /** @test */
-    public function guess_default_piece2()
+    public function testGuessDefaultPiece2()
     {
         $test = $this->guess->guess('5 pieces', new Piece);
 
@@ -35,8 +33,7 @@ class UnitGuesserDefaultTest extends TestCase
         $this->assertEquals(5, $test->getQuantity());
     }
 
-    /** @test */
-    public function guess_default_piece3()
+    public function testGuessDefaultPiece3()
     {
         $test = $this->guess->guess('20x éénkops', new Piece);
 
@@ -44,8 +41,7 @@ class UnitGuesserDefaultTest extends TestCase
         $this->assertEquals(20, $test->getQuantity());
     }
 
-    /** @test */
-    public function guess_without_quantity()
+    public function testGuessWithoutQuantity()
     {
         $test = $this->guess->guess('per set', new Piece);
 

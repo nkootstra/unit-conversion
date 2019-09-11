@@ -17,6 +17,7 @@ class Gram extends Unit
         // setup symbols and unit
         $this->setSymbols([
             'gram',
+            'gr',
             'g'
         ])->setUnits(0.001);
     }

@@ -12,20 +12,18 @@ class UnitGuesserMilliLiterTest extends TestCase
 
     public function setUp()
     {
-        $this->guess = new UnitGuesser();
+        $this->guess = new UnitGuesser;
     }
 
-    /** @test */
-    public function guess_short_milliliter()
+    public function testGuessShortMilliliter()
     {
-        $liter = $this->guess->guess('2,5 x 5 ml');
+        $unit = $this->guess->guess('2,5 x 5 ml');
 
-        $this->assertInstanceOf(MilliLiter::class, $liter);
-        $this->assertEquals(12.5, $liter->getQuantity());
+        $this->assertInstanceOf(MilliLiter::class, $unit);
+        $this->assertEquals(12.5, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_milliliter()
+    public function testGuessMilliliter()
     {
         $unit = $this->guess->guess('6 milliliter');
 
@@ -33,30 +31,27 @@ class UnitGuesserMilliLiterTest extends TestCase
         $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_milliliter2()
+    public function testGuessMilliliter2()
     {
-        $liter = $this->guess->guess('6 milliliters');
+        $unit = $this->guess->guess('6 milliliters');
 
-        $this->assertInstanceOf(MilliLiter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(MilliLiter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_milliliter3()
+    public function testGuessMilliliter3()
     {
-        $liter = $this->guess->guess('6 milliliter(s)');
+        $unit = $this->guess->guess('6 milliliter(s)');
 
-        $this->assertInstanceOf(MilliLiter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(MilliLiter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 
-    /** @test */
-    public function guess_milliliter4()
+    public function testGuessMillilitre4()
     {
-        $liter = $this->guess->guess('6 millilitre');
+        $unit = $this->guess->guess('6 millilitre');
 
-        $this->assertInstanceOf(MilliLiter::class, $liter);
-        $this->assertEquals(6, $liter->getQuantity());
+        $this->assertInstanceOf(MilliLiter::class, $unit);
+        $this->assertEquals(6, $unit->getQuantity());
     }
 }

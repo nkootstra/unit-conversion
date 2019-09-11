@@ -19,6 +19,21 @@ class UnitGuesser
         $this->initializeUnits();
     }
 
+    /**
+     * @param string $input
+     * @param UnitInterface|null $default
+     * @return Unit|null
+     */
+    public function from(string $input, ?UnitInterface $default = null): ?Unit
+    {
+        return $this->guess($input, $default);
+    }
+
+    /**
+     * @param string $input
+     * @param UnitInterface|null $default
+     * @return Unit|null
+     */
     public function guess(string $input, ?UnitInterface $default = null): ?Unit
     {
         // try to extract quantity and unit

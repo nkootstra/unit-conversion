@@ -7,40 +7,28 @@ use PHPUnit\Framework\TestCase;
 
 class VolumeLiterTest extends TestCase
 {
-    /** @test */
-    public function liter_name()
+    public function testBaseNameOfLiter()
     {
-        $liter = new Liter;
+        $unit = new Liter;
 
-        $this->assertEquals('liter', $liter->getName());
+        $this->assertEquals('liter', $unit->getName());
     }
 
-    /** @test */
-    public function liter_units()
+    public function testUnitsInLiter()
     {
-        $liter = new Liter;
+        $unit = new Liter;
 
-        $this->assertEquals(1, $liter->getUnits());
+        $this->assertEquals(1, $unit->getUnits());
     }
 
-    /** @test */
-    public function liter_symbols()
+    public function testSymbolsInLiter()
     {
-        $liter = new Liter;
+        $unit = new Liter;
 
         $this->assertEquals([
             'l',
             'liter',
             'litre'
-        ], $liter->getSymbols());
-    }
-
-    /** @test */
-    public function liter_base()
-    {
-        $liter = new Liter;
-
-        $this->assertTrue(true);
-        //$this->assertInstanceOf(Volume::class, $liter->getBase());
+        ], $unit->getSymbols());
     }
 }

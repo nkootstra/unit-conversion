@@ -3,6 +3,9 @@
 namespace Nkootstra\UnitConversion\Tests;
 
 use Nkootstra\UnitConversion\Unit\Volume;
+use Nkootstra\UnitConversion\Unit\Volume\CentiLiter;
+use Nkootstra\UnitConversion\Unit\Volume\Liter;
+use Nkootstra\UnitConversion\Unit\Volume\MilliLiter;
 use PHPUnit\Framework\TestCase;
 
 class VolumeTest extends TestCase
@@ -14,9 +17,12 @@ class VolumeTest extends TestCase
         $this->volume = new Volume;
     }
 
-    /** @test */
-    public function registered_units()
+    public function testCountRegisteredUnits()
     {
-        $this->assertTrue(true);
+        $this->assertEquals([
+            new CentiLiter,
+            new Liter,
+            new MilliLiter,
+        ],$this->volume->getUnits());
     }
 }
