@@ -23,6 +23,17 @@ $unit->getQuantity(); // 12.5
 $unit->getUnit(); // liter
 ```
 
+``` php
+$guess = new UnitGuesser;
+$unit = $guess->guess('1,5 l');
+
+$conversion = new UnitConversion;
+$converted = $conversion->convert($unit, 'milliliter');
+$converted->getQuantity(); // 15000
+$converted->getUnit(); // milliliter
+
+```
+
 ### Testing
 
 ``` bash

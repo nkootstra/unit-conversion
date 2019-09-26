@@ -68,6 +68,26 @@ class UnitGuesser
     }
 
     /**
+     * @param string $input
+     * @return Unit|null
+     */
+    public function isKnownUnit(string $unit): ?Unit
+    {
+        foreach ($this->knownUnits as $knownUnit) {
+
+            $class = new $knownUnit();
+
+            if (method_exists($class, 'is')) {
+                if ($class->is($unit)) {
+                    return $class;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param array c$numbers
      * @return float|int
      */
@@ -91,15 +111,8 @@ class UnitGuesser
 
     private function getUnit(string $unit, float $quantity, ?UnitInterface $default): ?Unit
     {
-        foreach ($this->knownUnits as $knownUnit) {
-
-            $class = new $knownUnit();
-
-            if (method_exists($class, 'is') && method_exists($class, 'setQuantity')) {
-                if ($class->is($unit)) {
-                    return $class->setQuantity($quantity);
-                }
-            }
+        if (($knownUnit = $this->isKnownUnit($unit)) !== null && method_exists($knownUnit, 'setQuantity')) {
+            return $knownUnit->setQuantity($quantity);
         }
 
         return $default->setQuantity($quantity);
