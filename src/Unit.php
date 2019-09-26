@@ -164,4 +164,9 @@ abstract class Unit implements UnitInterface
 
         return $this;
     }
+
+    public function convertTo(Unit $unit)
+    {
+        return false;
+    }
 }

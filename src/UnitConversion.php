@@ -7,12 +7,12 @@ use Nkootstra\UnitConversion\UnitGuesser;
 
 class UnitConversion
 {
-    private function convert(Unit $unit, string $convertToUnit)
+    public function convert(Unit $unit, string $convertToUnit)
     {
         // Check if it's a valid unit.
         $guesser = new UnitGuesser;
         if (($knownUnit = $guesser->isKnownUnit($convertToUnit)) !== null) {
-            return $this->convertTo($knownUnit);
+            return $unit->convertTo($knownUnit);
         }
 
         // Invalid Unit, we can't convert it. @todo throw Exception?
