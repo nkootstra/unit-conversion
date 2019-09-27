@@ -9,10 +9,11 @@ class KiloGram extends Unit
 {
     /**
      * Setup unit
+     * @param int $quantity
      */
-    public function __construct()
+    public function __construct($quantity=1)
     {
-        parent::__construct();
+        parent::__construct($quantity);
 
         // setup symbols and unit
         $this->setSymbols([

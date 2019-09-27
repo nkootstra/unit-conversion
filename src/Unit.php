@@ -4,6 +4,8 @@
 namespace Nkootstra\UnitConversion;
 
 
+use Error;
+use Nkootstra\UnitConversion\Exception\CouldNotConvertException;
 use Nkootstra\UnitConversion\Interfaces\UnitInterface;
 use ReflectionClass;
 
@@ -163,5 +165,38 @@ abstract class Unit implements UnitInterface
         $this->quantity = $quantity;
 
         return $this;
+    }
+
+    /**
+     * @param string $unit
+     * @return UnitInterface|null
+     * @throws CouldNotConvertException
+     * @throws \ReflectionException
+     * @throws Error
+     */
+    public function to(string $unit): ?UnitInterface
+    {
+        // create instance
+        /** @var Unit $intoUnit */
+        $intoUnit = new $unit(); // this will result in a Error Exception if the class could not be found
+
+        if(!is_subclass_of($intoUnit, Unit::class)) {
+            throw new CouldNotConvertException('$unit is not a sub class of UnitInterface');
+        }
+
+        $currentClass = new \ReflectionClass($this);
+        $intoClass = new \ReflectionClass($intoUnit);
+
+        if($currentClass->getNamespaceName() !== $intoClass->getNamespaceName()) {
+            throw new CouldNotConvertException('Could not convert ' . $this->getName() . ' into ' . $intoUnit->getName());
+        }
+
+        if($this->getUnits() > $intoUnit->getUnits()) {
+            $intoUnit->setQuantity($this->getQuantity() / $intoUnit->getUnits());
+        } else {
+            $intoUnit->setQuantity($this->getQuantity() / ($intoUnit->getUnits()/$this->getUnits()));
+        }
+
+        return $intoUnit;
     }
 }
