@@ -26,6 +26,13 @@ abstract class Unit implements UnitInterface
     protected $base;
 
     /**
+     * Contains array of conversions that are possible for the Unit
+     *
+     * @var array
+     */
+    protected $conversions;
+
+    /**
      * Contains array of symbols that represent Unit
      *
      * @var array
@@ -106,6 +113,25 @@ abstract class Unit implements UnitInterface
     public function setBase(UnitInterface $base): UnitInterface
     {
         $this->base = $base;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConversions(): array
+    {
+        return $this->conversions;
+    }
+
+    /**
+     * @param array $conversions
+     * @return UnitInterface
+     */
+    public function setConversions(array $conversions): UnitInterface
+    {
+        $this->conversions = $conversions;
 
         return $this;
     }

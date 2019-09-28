@@ -5,7 +5,7 @@ namespace Nkootstra\UnitConversion;
 
 use HaydenPierce\ClassFinder\ClassFinder;
 use InvalidArgumentException;
-use mysql_xdevapi\Exception;
+use Exception;
 use Nkootstra\UnitConversion\Interfaces\UnitInterface;
 
 class UnitGuesser

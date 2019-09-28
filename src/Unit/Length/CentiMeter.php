@@ -15,6 +15,12 @@ class CentiMeter extends Unit
     {
         parent::__construct($quantity);
 
+        $this->setConversions([
+            MilliMeter::class   => 0.1,
+            Inch::class         => 2.54,
+            Meter::class        => 100,
+        ]);
+
         // setup symbols and unit
         $this->setSymbols([
             'centimeter',
