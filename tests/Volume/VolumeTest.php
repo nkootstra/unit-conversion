@@ -1,6 +1,6 @@
 <?php
 
-namespace Nkootstra\UnitConversion\Tests;
+namespace Nkootstra\UnitConversion\Tests\Volume;
 
 use Nkootstra\UnitConversion\Unit\Volume;
 use Nkootstra\UnitConversion\Unit\Volume\CentiLiter;
