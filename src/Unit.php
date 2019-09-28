@@ -193,6 +193,17 @@ abstract class Unit implements UnitInterface
         return $this;
     }
 
+    public function canConvertTo(string $unit): boolean
+    {
+        $conversionUnits = $this->getConversions();
+
+        if (isset($conversionUnits[$unit])) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * @param string $unit
      * @return UnitInterface|null
