@@ -15,7 +15,7 @@ class Inch extends Unit
     {
         parent::__construct($quantity);
 
-        $this->setConversions([
+        $this->setConversionRates([
             MilliMeter::class   => 0.03937008,
             CentiMeter::class   => 0.39370079,
             Meter::class        => 39.37007874,

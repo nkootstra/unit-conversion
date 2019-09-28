@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Nkootstra\UnitConversion\Unit\Length;
+namespace Nkootstra\UnitConversion\Unit\Mass;
 
 use Nkootstra\UnitConversion\Unit;
 
-class MilliMeter extends Unit
+class Ounce extends Unit
 {
     /**
      * Setup unit
@@ -16,16 +16,17 @@ class MilliMeter extends Unit
         parent::__construct($quantity);
 
         $this->setConversionRates([
-            CentiMeter::class   => 100,
-            Inch::class         => 25.4,
-            Meter::class        => 1000,
+            Gram::class         => 0.03527396,
+            MilliGram::class    => 0.00003527,
+            KiloGram::class     => 35.27396198,
+            MetricTon::class    => 35273.96198069,
         ]);
 
         // setup symbols and unit
         $this->setSymbols([
-            'millimeter',
-            'millimetre',
-            'mm',
+            'gram',
+            'gr',
+            'g'
         ])->setUnits(0.001);
     }
 }

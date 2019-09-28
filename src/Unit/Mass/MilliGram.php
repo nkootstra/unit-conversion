@@ -15,6 +15,13 @@ class MilliGram extends Unit
     {
         parent::__construct($quantity);
 
+        $this->setConversionRates([
+            MetricTon::class    => 1000000000,
+            Gram::class         => 1000,
+            KiloGram::class     => 1000000,
+            Ounce::class        => 28349.5231,
+        ]);
+
         // setup symbols and unit
         $this->setSymbols([
             'milligram',
