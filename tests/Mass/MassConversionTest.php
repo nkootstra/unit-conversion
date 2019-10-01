@@ -23,4 +23,15 @@ class MassConversionTest extends TestCase
         $this->assertEquals(500, $into->getQuantity());
 
     }
+
+    public function testGramToKiloGram()
+    {
+        $from = new Gram(10000);
+
+        $into = $from->to(KiloGram::class);
+
+        $this->assertInstanceOf(KiloGram::class, $into);
+        $this->assertEquals(10, $into->getQuantity());
+
+    }
 }
