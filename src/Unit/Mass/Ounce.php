@@ -27,6 +27,6 @@ class Ounce extends Unit
             'gram',
             'gr',
             'g'
-        ])->setUnits(0.001);
+        ])->setUnits(1);
     }
 }
