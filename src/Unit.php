@@ -26,6 +26,13 @@ abstract class Unit implements UnitInterface
     protected $base;
 
     /**
+     * Contains array of conversions that are possible for the Unit
+     *
+     * @var array
+     */
+    protected $conversions = [];
+
+    /**
      * Contains array of symbols that represent Unit
      *
      * @var array
@@ -113,6 +120,25 @@ abstract class Unit implements UnitInterface
     /**
      * @return array
      */
+    public function getConversionRates(): array
+    {
+        return $this->conversionRates;
+    }
+
+    /**
+     * @param array $rates
+     * @return UnitInterface
+     */
+    public function setConversionRates(array $rates): UnitInterface
+    {
+        $this->conversionRates = $rates;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
     public function getSymbols(): array
     {
         return $this->symbols;
@@ -167,6 +193,16 @@ abstract class Unit implements UnitInterface
         return $this;
     }
 
+    public function getConversionRate(string $unit): float
+    {
+        $conversionRates = $this->getConversionRates();
+        if ( isset($conversionRates[$unit]) ) {
+            return $conversionRates[$unit];
+        }
+
+        return 0;
+    }
+
     /**
      * @param string $unit
      * @return UnitInterface|null
@@ -176,6 +212,10 @@ abstract class Unit implements UnitInterface
      */
     public function to(string $unit): ?UnitInterface
     {
+        if (($conversionRate = $this->getConversionRate($unit)) === 0) {
+            throw new CouldNotConvertException("{$unit} is not available for conversion for {$this->getName()}");
+        }
+
         // create instance
         /** @var Unit $intoUnit */
         $intoUnit = new $unit(); // this will result in a Error Exception if the class could not be found
@@ -191,11 +231,7 @@ abstract class Unit implements UnitInterface
             throw new CouldNotConvertException('Could not convert ' . $this->getName() . ' into ' . $intoUnit->getName());
         }
 
-        if($this->getUnits() > $intoUnit->getUnits()) {
-            $intoUnit->setQuantity($this->getQuantity() / $intoUnit->getUnits());
-        } else {
-            $intoUnit->setQuantity($this->getQuantity() / ($intoUnit->getUnits()/$this->getUnits()));
-        }
+        $intoUnit->setQuantity($this->getQuantity() / $conversionRate);
 
         return $intoUnit;
     }

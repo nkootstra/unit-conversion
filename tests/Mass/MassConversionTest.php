@@ -8,7 +8,6 @@ use Nkootstra\UnitConversion\Unit\Length\Meter;
 use Nkootstra\UnitConversion\Unit\Mass\Gram;
 use Nkootstra\UnitConversion\Unit\Mass\KiloGram;
 use Nkootstra\UnitConversion\Unit\Volume\Liter;
-use Nkootstra\UnitConversion\Unit\Volume\MilliLiter;
 use PHPUnit\Framework\TestCase;
 
 class MassConversionTest extends TestCase
@@ -24,44 +23,47 @@ class MassConversionTest extends TestCase
 
     }
 
-    public function testMilliliterToLiter()
+    public function testGramToKiloGram()
     {
-        $from = new MilliLiter(500);
+        $from = new Gram(10000);
 
-        $into = $from->to(Liter::class);
+        $into = $from->to(KiloGram::class);
 
-        $this->assertInstanceOf(Liter::class, $into);
-        $this->assertEquals(0.5, $into->getQuantity());
+        $this->assertInstanceOf(KiloGram::class, $into);
+        $this->assertEquals(10, $into->getQuantity());
+
     }
 
-    public function testLiterToOtherUnit()
+    public function testKiloGramToOtherUnit()
     {
         $this->expectException(CouldNotConvertException::class);
 
-        $liter = new Liter(0.5);
+        $kilogram = new KiloGram(0.5);
 
-        $meter = $liter->to(Meter::class);
+        $liter = $kilogram->to(Liter::class);
 
     }
 
-    public function testLiterToOtherNotExistingUnit()
+    public function testKiloGramToOtherNotExistingUnit()
     {
         $this->expectException(\Error::class);
 
-        $liter = new Liter(0.5);
+        $kilogram = new KiloGram(0.5);
 
-        $meter = $liter->to('Not\Exists');
+        $unknown = $kilogram->to('Not\Exists');
 
     }
 
-    public function testLiterToBaseUnit()
+    public function testKiloGramToBaseUnit()
     {
         // Error: Cannot instantiate abstract class Nkootstra\UnitConversion\Unit
         $this->expectException(\Error::class);
 
-        $liter = new Liter(0.5);
+        $kilogram = new KiloGram(0.5);
 
-        $meter = $liter->to(Unit::class);
+        $base = $kilogram->to(Unit::class);
 
     }
+
+    // @TODO tests for each conversion?
 }

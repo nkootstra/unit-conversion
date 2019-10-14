@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Nkootstra\UnitConversion\Unit\Volume;
+namespace Nkootstra\UnitConversion\Unit\Mass;
 
 use Nkootstra\UnitConversion\Unit;
 
-class Liter extends Unit
+class Ounce extends Unit
 {
     /**
      * Setup unit
@@ -16,15 +16,17 @@ class Liter extends Unit
         parent::__construct($quantity);
 
         $this->setConversionRates([
-            MilliLiter::class    => 0.001,
-            CentiLiter::class    => 100,
+            Gram::class         => 0.03527396,
+            MilliGram::class    => 0.00003527,
+            KiloGram::class     => 35.27396198,
+            MetricTon::class    => 35273.96198069,
         ]);
 
         // setup symbols and unit
         $this->setSymbols([
-            'l',
-            'liter',
-            'litre'
+            'gram',
+            'gr',
+            'g'
         ])->setUnits(1);
     }
 }

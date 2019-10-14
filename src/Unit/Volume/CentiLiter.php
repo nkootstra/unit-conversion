@@ -15,6 +15,11 @@ class CentiLiter extends Unit
     {
         parent::__construct($quantity);
 
+        $this->setConversionRates([
+            MilliLiter::class   => 10,
+            Liter::class        => 0.01,
+        ]);
+
         // setup symbols and unit
         $this->setSymbols([
             'centiliter',
